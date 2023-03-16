@@ -25,7 +25,7 @@ export const DevStats = (props: DevStatsProps) => {
 }
 
 const Wrapper = styled.section`
-  background-color: var(--color-darkest-blue);
+  background-color: var(--color-bg);
   padding: var(--spacing-4) var(--spacing-8);
   border-radius: 10px;
   margin-left: calc(117px + var(--spacing-9)); // TODO
@@ -43,4 +43,5 @@ const Name = styled.dt`
 
 const Value = styled.dd`
   font: var(--font-h2);
+  color: var(--color-main);
 `

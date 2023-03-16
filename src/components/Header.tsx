@@ -22,4 +22,5 @@ const Wrapper = styled.header`
 
 const Heading = styled.h1`
   font: var(--font-h1);
+  color: var(--color-main);
 `

@@ -22,9 +22,10 @@ const Wrapper = styled.form`
   align-items: center;
   gap: var(--spacing-6);
   padding-inline: var(--spacing-8) var(--spacing-3);
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-alt-bg);
   border-radius: 15px;
   block-size: var(--spacing-18);
+  box-shadow: var(--shadow);
 `
 
 const Icon = styled(IconSearch)`
@@ -35,10 +36,11 @@ const Input = styled.input`
   flex: 1;
   font: 400 18px/25px var(--font-base);
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-main);
+  caret-color: var(--color-primary);
 
   &::placeholder {
-    color: var(--color-white);
+    color: var(--color-text);
   }
 `
 

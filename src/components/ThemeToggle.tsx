@@ -8,9 +8,9 @@ export type ThemeToggleProps = ComponentPropsWithoutRef<'button'>
 export const ThemeToggle = (props: ThemeToggleProps) => {
   return (
     <Wrapper {...props}>
-      Dark
-      {/* Light */}
+      Light
       <IconSun />
+      {/* Dark */}
       {/* <IconMoon /> */}
     </Wrapper>
   )
@@ -22,9 +22,16 @@ const Wrapper = styled.button`
   gap: var(--spacing-4);
   font: var(--font-h4);
   font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   transition: color var(--duration);
 
   &:hover {
-    color: #90a4d4; // TODO
+    // TODO
+    color: #90a4d4;
+
+    @media (--prefers-color-scheme: light) {
+      color: var(--color-main);
+    }
   }
 `

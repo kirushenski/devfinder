@@ -20,7 +20,8 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-alt-bg);
   border-radius: 15px;
   padding: var(--spacing-12);
+  box-shadow: var(--shadow);
 `

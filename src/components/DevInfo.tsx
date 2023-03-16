@@ -47,6 +47,7 @@ const Main = styled.div`
 
 const Name = styled.h2`
   font: var(--font-h1);
+  color: var(--color-main);
 `
 
 const Username = styled.a`

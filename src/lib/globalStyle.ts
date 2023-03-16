@@ -2,19 +2,15 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    /* HSL */
-    --hsl-primary: 212 100% 50%;
-    --hsl-white: 0 0% 100%;
-    --hsl-darkest-blue: 220 40% 13%;
-    --hsl-dark-blue: 222 41% 20%;
-    --hsl-error: 0 91% 62%;
-
     /* Colors */
-    --color-primary: hsl(var(--hsl-primary));
-    --color-white: hsl(var(--hsl-white));
-    --color-darkest-blue: hsl(var(--hsl-darkest-blue));
-    --color-dark-blue: hsl(var(--hsl-dark-blue));
-    --color-error: hsl(var(--hsl-error));
+    --color-white: hsl(0 0% 100%);
+    --color-primary: hsl(212 100% 50%);
+    --color-error: hsl(0 91% 62%);
+
+    --color-text: var(--color-white);
+    --color-bg: hsl(220 40% 13%);
+    --color-alt-bg: hsl(222 41% 20%);
+    --color-main: var(--color-white);
 
     /* Grid */
     --spacing-base: 4px;
@@ -39,14 +35,27 @@ const GlobalStyle = createGlobalStyle`
     --spacing-19: calc(var(--spacing-base) * 19);
     --spacing-20: calc(var(--spacing-base) * 20);
 
+    /* Shadows */
+    --shadow: none;
+
     /* Animation */
     --duration: 300ms;
 
     /* Normalize */
-    --body-color: var(--color-white);
-    --body-background: var(--color-darkest-blue);
+    --body-color: var(--color-text);
+    --body-background: var(--color-bg);
     --link-underline-width: 2px;
     --focus-ring-width: 3px;
+    --focus-ring-color: var(--color-primary);
+
+    @media (prefers-color-scheme: light) {
+      --color-text: hsl(217 35% 45%);
+      --color-bg: hsl(227 100% 98%);
+      --color-alt-bg: var(--color-white);
+      --color-main: hsl(217 21% 21%);
+
+      --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
+    }
   }
 
   *, *::before, *::after {
@@ -82,6 +91,8 @@ const GlobalStyle = createGlobalStyle`
       scroll-behavior: auto;
     }
   }
+
+  /* TODO rems with multipliers */
 
   body {
     --font-h1: 700 26px/38px var(--font-base);
@@ -128,7 +139,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :focus {
-    outline: var(--focus-ring-width) solid var(--color-white);
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-width);
   }
 
