@@ -3,12 +3,18 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   :root {
     /* HSL */
-    --hsl-black: 0 0% 0%;
+    --hsl-primary: 212 100% 50%;
     --hsl-white: 0 0% 100%;
+    --hsl-darkest-blue: 220 40% 13%;
+    --hsl-dark-blue: 222 41% 20%;
+    --hsl-error: 0 91% 62%;
 
     /* Colors */
-    --color-black: hsl(var(--hsl-black));
+    --color-primary: hsl(var(--hsl-primary));
     --color-white: hsl(var(--hsl-white));
+    --color-darkest-blue: hsl(var(--hsl-darkest-blue));
+    --color-dark-blue: hsl(var(--hsl-dark-blue));
+    --color-error: hsl(var(--hsl-error));
 
     /* Grid */
     --spacing-base: 8px;
@@ -27,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     --duration: 300ms;
 
     /* Normalize */
-    --body-color: var(--color-black);
+    --body-color: var(--color-darkest-blue);
     --body-background: var(--color-white);
     --link-underline-width: 2px;
     --focus-ring-width: 3px;
@@ -64,7 +70,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    --font-body: 500 32px/48px var(--font-base);
+    --font-h1: 700 26px/38px var(--font-base);
+    --font-h2: 700 22px/33px var(--font-base);
+    --font-h3: 400 16px/24px var(--font-base);
+    --font-h4: 400 13px/20px var(--font-base);
+    --font-body: 400 15px/25px var(--font-base);
 
     font: var(--font-body);
     color: var(--body-color);
