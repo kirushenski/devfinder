@@ -1,18 +1,67 @@
-import { ComponentPropsWithoutRef } from 'react'
+import {
+  ChangeEventHandler,
+  ComponentPropsWithoutRef,
+  Dispatch,
+  FormEventHandler,
+  SetStateAction,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import IconSearch from '~icons/icon-search.svg'
 
-export type SearchProps = ComponentPropsWithoutRef<'form'>
+export type SearchProps = ComponentPropsWithoutRef<'form'> & {
+  setData: Dispatch<SetStateAction<DevData | undefined>>
+}
 
 // TODO Clear button
 
-export const Search = (props: SearchProps) => {
+export const Search = ({ setData, ...props }: SearchProps) => {
+  const [value, setValue] = useState('')
+  const [isNoResults, setIsNoResults] = useState(false)
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setValue(e.target.value)
+  }
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+
+    if (value === 'octocat') {
+      setData({
+        avatarUrl: 'https://avatars.githubusercontent.com/u/583231?v=4',
+        name: 'The Octocat',
+        login: 'octocat',
+        createdAt: '2011-01-25T18:44:36Z',
+        bio: null,
+        publicRepos: 8,
+        followers: 8632,
+        following: 9,
+        location: 'San Francisco',
+        twitterUsername: null,
+        blog: 'https://github.blog',
+        company: '@github',
+      })
+      setIsNoResults(false)
+    } else {
+      setIsNoResults(true)
+    }
+  }
+
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} onSubmit={handleSubmit}>
       <Icon />
-      <Input type="search" placeholder="Search GitHub username…" autoFocus spellCheck={false} />
-      <NoResults>No results</NoResults>
-      <Button type="submit">Search</Button>
+      <Input
+        type="search"
+        value={value}
+        onChange={handleChange}
+        placeholder="Search GitHub username…"
+        autoFocus
+        spellCheck={false}
+      />
+      {isNoResults && <NoResults>No results</NoResults>}
+      <Button type="submit" disabled={!value}>
+        Search
+      </Button>
     </Wrapper>
   )
 }
