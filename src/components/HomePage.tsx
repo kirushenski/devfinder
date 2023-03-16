@@ -6,6 +6,10 @@ import { Search } from './Search'
 
 export type HomePageProps = ComponentPropsWithoutRef<'div'>
 
+// TODO Integrate Github API
+// TODO Build dark theme switch
+// TODO Add responsive rules
+
 // TODO Don't jump on card dissapear
 
 export const HomePage = (props: HomePageProps) => {

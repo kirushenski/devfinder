@@ -58,6 +58,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -145,6 +150,10 @@ const GlobalStyle = createGlobalStyle`
 
   .js-focus-visible :focus:not(.focus-visible), input:focus, textarea:focus {
     outline: none;
+  }
+
+  input[type='search']::-webkit-search-cancel-button {
+    display: none;
   }
 `
 

@@ -13,7 +13,8 @@ export type SearchProps = ComponentPropsWithoutRef<'form'> & {
   setData: Dispatch<SetStateAction<DevData | undefined>>
 }
 
-// TODO Clear button
+// TODO Broken autofocus
+// TODO Extend interactive zone
 
 export const Search = ({ setData, ...props }: SearchProps) => {
   const [value, setValue] = useState('')
