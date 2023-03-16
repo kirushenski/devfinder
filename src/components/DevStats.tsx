@@ -1,23 +1,24 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 
-export type DevStatsProps = ComponentPropsWithoutRef<'section'>
+export type DevStatsProps = ComponentPropsWithoutRef<'section'> &
+  Pick<DevData, 'publicRepos' | 'followers' | 'following'>
 
-export const DevStats = (props: DevStatsProps) => {
+export const DevStats = ({ publicRepos, followers, following, ...props }: DevStatsProps) => {
   return (
     <Wrapper {...props}>
       <List>
         <div>
           <Name>Repos</Name>
-          <Value>8</Value>
+          <Value>{publicRepos}</Value>
         </div>
         <div>
           <Name>Followers</Name>
-          <Value>3938</Value>
+          <Value>{followers}</Value>
         </div>
         <div>
           <Name>Following</Name>
-          <Value>9</Value>
+          <Value>{following}</Value>
         </div>
       </List>
     </Wrapper>

@@ -19,6 +19,7 @@
   "rules": {
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-autofocus": "off",
-    "import/order": "error"
+    "import/order": "error",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   }
 }

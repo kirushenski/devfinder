@@ -5,35 +5,48 @@ import IconLocation from '~icons/icon-location.svg'
 import IconTwitter from '~icons/icon-twitter.svg'
 import IconWebsite from '~icons/icon-website.svg'
 
-export type DevLinksProps = ComponentPropsWithoutRef<'section'>
+export type DevLinksProps = ComponentPropsWithoutRef<'section'> &
+  Pick<DevData, 'location' | 'twitterUsername' | 'blog' | 'company'>
 
-export const DevLinks = (props: DevLinksProps) => {
+// TODO Check if company starts with @
+
+export const DevLinks = ({ location, twitterUsername, blog, company, ...props }: DevLinksProps) => {
   return (
     <Wrapper {...props}>
       <List>
-        <Item>
+        <Item isEmpty={!location}>
           <IconLocation />
-          San Francisco
+          {location ?? 'Not Available'}
         </Item>
-        <Item isEmpty>
+        <Item isEmpty={!twitterUsername}>
           <IconTwitter />
-          Not Available
+          {twitterUsername ? (
+            <Link href={`https://twitter.com/${twitterUsername}`} target="_blank" rel="nofollow noopener noreferrer">
+              @{twitterUsername}
+            </Link>
+          ) : (
+            'Not Available'
+          )}
         </Item>
-        {/* <Item>
-          <IconTwitter />
-          <Link href="https://twitter.com/octocat" target="_blank" rel="nofollow noopener noreferrer">@octocat</Link>
-        </Item> */}
-        <Item>
+        <Item isEmpty={!blog}>
           <IconWebsite />
-          <Link href="https://github.blog" target="_blank" rel="nofollow noopener noreferrer">
-            https://github.blog
-          </Link>
+          {blog ? (
+            <Link href={blog} target="_blank" rel="nofollow noopener noreferrer">
+              {blog}
+            </Link>
+          ) : (
+            'Not Available'
+          )}
         </Item>
-        <Item>
+        <Item isEmpty={!company}>
           <IconCompany />
-          <Link href="https://github.com/github" target="_blank" rel="nofollow noopener noreferrer">
-            @github
-          </Link>
+          {company ? (
+            <Link href={`https://github.com/${company}`} target="_blank" rel="nofollow noopener noreferrer">
+              {company}
+            </Link>
+          ) : (
+            'Not Available'
+          )}
         </Item>
       </List>
     </Wrapper>

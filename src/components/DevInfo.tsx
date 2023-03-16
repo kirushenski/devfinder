@@ -2,28 +2,29 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 
-export type DevInfoProps = ComponentPropsWithoutRef<'section'>
+export type DevInfoProps = ComponentPropsWithoutRef<'section'> &
+  Pick<DevData, 'avatarUrl' | 'name' | 'login' | 'createdAt' | 'bio'>
 
 // TODO Image optimization (70x70 mobile)
 // TODO text-decoration transition
+// TODO Convert createdAt
 
-export const DevInfo = (props: DevInfoProps) => {
+export const DevInfo = ({ avatarUrl, name, login, createdAt, bio, ...props }: DevInfoProps) => {
   return (
     <Wrapper {...props}>
-      <Avatar src="https://placekitten.com/117/117" width={117} height={117} alt="" />
+      <Avatar src={avatarUrl} width={117} height={117} alt={`Avatar of ${name}`} />
       <Main>
         <div>
-          <Name>The Octocat</Name>
-          <Username href="https://github.com/octocat" target="_blank" rel="nofollow noopener noreferrer">
-            @octocat
+          <Name>{name}</Name>
+          <Username href={`https://github.com/${login}`} target="_blank" rel="nofollow noopener noreferrer">
+            @{login}
           </Username>
         </div>
         <div>
-          Joined <time dateTime="2011-01-25">25 Jan 2011</time>
+          Joined <time dateTime={createdAt}>{createdAt}</time>
         </div>
       </Main>
-      <Bio>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</Bio>
-      {/* <Bio isEmpty>This profile has no bio</Bio> */}
+      <Bio isEmpty={!bio}>{bio ?? 'This profile has no bio'}</Bio>
     </Wrapper>
   )
 }

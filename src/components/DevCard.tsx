@@ -4,14 +4,27 @@ import { DevInfo } from './DevInfo'
 import { DevLinks } from './DevLinks'
 import { DevStats } from './DevStats'
 
-export type DevCardProps = ComponentPropsWithoutRef<'article'>
+export type DevCardProps = ComponentPropsWithoutRef<'article'> & {
+  data: DevData
+}
 
-export const DevCard = (props: DevCardProps) => {
+export const DevCard = ({ data, ...props }: DevCardProps) => {
   return (
     <Wrapper {...props}>
-      <DevInfo />
-      <DevStats />
-      <DevLinks />
+      <DevInfo
+        avatarUrl={data.avatarUrl}
+        name={data.name}
+        login={data.login}
+        createdAt={data.createdAt}
+        bio={data.bio}
+      />
+      <DevStats publicRepos={data.publicRepos} followers={data.followers} following={data.following} />
+      <DevLinks
+        location={data.location}
+        twitterUsername={data.twitterUsername}
+        blog={data.blog}
+        company={data.company}
+      />
     </Wrapper>
   )
 }
