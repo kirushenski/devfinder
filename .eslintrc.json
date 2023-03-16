@@ -17,8 +17,8 @@
     "prettier"
   ],
   "rules": {
-    // Next.JS <Link /> component is used without href attribute on <a />
     "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/no-autofocus": "off",
     "import/order": "error"
   }
 }

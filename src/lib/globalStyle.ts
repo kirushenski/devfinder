@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --color-error: hsl(var(--hsl-error));
 
     /* Grid */
-    --spacing-base: 8px;
+    --spacing-base: 4px;
     --spacing-1: calc(var(--spacing-base) * 1);
     --spacing-2: calc(var(--spacing-base) * 2);
     --spacing-3: calc(var(--spacing-base) * 3);
@@ -28,13 +28,23 @@ const GlobalStyle = createGlobalStyle`
     --spacing-8: calc(var(--spacing-base) * 8);
     --spacing-9: calc(var(--spacing-base) * 9);
     --spacing-10: calc(var(--spacing-base) * 10);
+    --spacing-11: calc(var(--spacing-base) * 11);
+    --spacing-12: calc(var(--spacing-base) * 12);
+    --spacing-13: calc(var(--spacing-base) * 13);
+    --spacing-14: calc(var(--spacing-base) * 14);
+    --spacing-15: calc(var(--spacing-base) * 15);
+    --spacing-16: calc(var(--spacing-base) * 16);
+    --spacing-17: calc(var(--spacing-base) * 17);
+    --spacing-18: calc(var(--spacing-base) * 18);
+    --spacing-19: calc(var(--spacing-base) * 19);
+    --spacing-20: calc(var(--spacing-base) * 20);
 
     /* Animation */
     --duration: 300ms;
 
     /* Normalize */
-    --body-color: var(--color-darkest-blue);
-    --body-background: var(--color-white);
+    --body-color: var(--color-white);
+    --body-background: var(--color-darkest-blue);
     --link-underline-width: 2px;
     --focus-ring-width: 3px;
   }
@@ -54,11 +64,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #__next {
-    height: 100%;
+    block-size: 100%;
   }
 
   #__next {
     isolation: isolate;
+    display: grid;
+    place-items: center;
+    min-inline-size: 375px;
+    padding: var(--spacing-4);
   }
 
   html {
@@ -94,7 +108,7 @@ const GlobalStyle = createGlobalStyle`
 
   img, picture, video, canvas, svg {
     display: block;
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 
   svg {
@@ -107,8 +121,6 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    box-shadow: inset 0 calc(-1 * var(--link-underline-width)) 0 0 currentColor;
-    padding-bottom: var(--link-underline-width);
   }
 
   :disabled {
