@@ -1,0 +1,52 @@
+{
+  "name": "next-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next dev",
+    "build": "next build",
+    "serve": "next start",
+    "lint:scripts:ci": "eslint . --ext .ts,.tsx",
+    "lint:scripts": "npm run lint:scripts:ci -- --fix",
+    "lint:format:ci": "prettier . -c --ignore-path .gitignore",
+    "lint:format": "npm run lint:format:ci -- -w",
+    "lint:ci": "npm run lint:scripts:ci && npm run lint:format:ci",
+    "lint": "npm run lint:scripts && npm run lint:format",
+    "type-check": "tsc",
+    "validate:ci": "npm run lint:ci && npm run type-check",
+    "validate": "npm run lint && npm run type-check",
+    "setup:ci": "npm ci && npm run validate:ci",
+    "setup": "npm ci && npm run validate",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{tsx,ts,css}": [
+      "npm run lint"
+    ]
+  },
+  "engines": {
+    "node": "^18.0.0"
+  },
+  "dependencies": {
+    "focus-visible": "^5.2.0",
+    "next": "^13.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@types/node": "^18.15.3",
+    "@types/react": "^18.0.28",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-config-next": "^13.2.4",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
+    "typescript": "^5.0.2"
+  }
+}
